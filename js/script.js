@@ -1,10 +1,7 @@
 const grid = document.querySelector('.grid');
-const htmlArray = []
 const state = {
-    page: 1,
-} 
-
-
+    page: 1
+}
 
 const getImages = ((page) => {
     axios.get('https://api.unsplash.com/photos/', {
@@ -16,14 +13,18 @@ const getImages = ((page) => {
     }).then( (response) => {
         //console.log(response.data)
         response.data.forEach(d => {
-            // console.log(d)
+            console.log(d)
             //htmlArray = []
             // htmlArray.push(`<div class="grid-item"><img src="${d.urls.regular}"></img></div>`)
-            grid.insertAdjacentHTML('beforeend', `<div class="grid-item"><img src="${d.urls.regular}"></img></div>`)
+            grid.insertAdjacentHTML('beforeend', `<div class="grid-item">
+                <figure>
+                    <a href="${d.links.html}" target="_blank">
+                        <img src="${d.urls.regular}"></img>
+                    </a>
+                </figure>
+                <figcaption>${d.user.name}</figcaption>
+            </div>`)
         });
-    }).then(() => {
-        // grid.insertAdjacentHTML('beforeend', state.output)
-        // state.output = ""`
     }).then(() => {
         const msnry = new Masonry( grid, {
             itemSelector: '.grid-item',
@@ -52,6 +53,8 @@ const yHandler = () =>{
     }
 }
 
-window.onscroll = yHandler;
+const scrollEvent = _.throttle(yHandler, 300) 
+
+window.onscroll = scrollEvent;
 
 window.addEventListener('load', getImages(state.page));

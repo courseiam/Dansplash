@@ -23,6 +23,12 @@
   .grid-item {
     width: 33.333%;
   }
+
+  .grid-item {
+    padding: 5px;
+    border: 1px solid #ccc;
+    background: #eeeeee;
+  }
   
   .grid-item {
     float: left;
@@ -31,5 +37,11 @@
   .grid-item img {
     display: block;
     width: 100%;
+  }
+
+  figcaption {
+    padding: 5px;
+    color: #4d4d4d;
+    text-align: center
   }
   
