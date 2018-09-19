@@ -48,8 +48,9 @@ const yHandler = () =>{
 	//const y = scroll + window.innerHeight;
 	if(y >= contentHeight){
         state.page++
-        getImages(state.page)
+        getImages(state)
         console.log('Fired!')
+        console.log(state.page)
     }
 }
 

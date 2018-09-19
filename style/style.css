@@ -6,7 +6,7 @@
 
 .grid {
     background: #DDD;
-    margin: 10px auto;
+    margin: 30px auto;
     max-width: 1400px;
   }
   
@@ -43,3 +43,11 @@
     text-align: center
   }
   
+  .options {
+    position: fixed;
+    z-index: 100;
+    background: #eeeeee;
+    width: 100%;
+    top: 0;
+    padding: 5px;
+  }
