@@ -23,15 +23,13 @@
   .grid-item {
     width: 33.333%;
   }
-
-  .grid-item {
-    padding: 5px;
-    border: 1px solid #ccc;
-    background: #eeeeee;
-  }
   
   .grid-item {
     float: left;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background: #eeeeee;
+    margin-bottom: 5px;
   }
   
   .grid-item img {

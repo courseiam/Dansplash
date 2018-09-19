@@ -1,21 +1,21 @@
 const grid = document.querySelector('.grid');
 const state = {
-    page: 1
+    page: 1,
+    per_page: 10,
+    order_by: 'popular'
 }
 
-const getImages = ((page) => {
+const getImages = ((state) => {
     axios.get('https://api.unsplash.com/photos/', {
         params: {
             client_id: '4eb7b0a2d424f23026aff0be23ee0f36290dcfe9dee54bc69204a55f134a2a13',
-            per_page: '10',
-            page
+            per_page: state.per_page,
+            page: state.page,
+            order_by: state.order_by
         }
     }).then( (response) => {
         //console.log(response.data)
         response.data.forEach(d => {
-            console.log(d)
-            //htmlArray = []
-            // htmlArray.push(`<div class="grid-item"><img src="${d.urls.regular}"></img></div>`)
             grid.insertAdjacentHTML('beforeend', `<div class="grid-item">
                 <figure>
                     <a href="${d.links.html}" target="_blank">
@@ -57,4 +57,4 @@ const scrollEvent = _.throttle(yHandler, 300)
 
 window.onscroll = scrollEvent;
 
-window.addEventListener('load', getImages(state.page));
+window.addEventListener('load', getImages(state));
